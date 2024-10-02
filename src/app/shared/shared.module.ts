@@ -1,18 +1,26 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Error404PageComponent } from './pages/error404-page/error404-page.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
+
+import {Error404PageComponent} from './pages/error404-page/error404-page.component';
+import {BannerComponent} from './pages/banner/banner.component';
+import {PrimengModule} from "./modules/primeng.module";
 
 
 @NgModule({
   declarations: [
-    Error404PageComponent
+    Error404PageComponent,
+    BannerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    PrimengModule
   ],
-  exports:[
-    Error404PageComponent
+  exports: [
+    Error404PageComponent,
+    BannerComponent,
+
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

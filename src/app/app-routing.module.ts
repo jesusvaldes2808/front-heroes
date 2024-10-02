@@ -1,37 +1,42 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { Error404PageComponent } from './shared/pages/error404-page/error404-page.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+
+import {Error404PageComponent} from './shared/pages/error404-page/error404-page.component';
+import {AuthGuard} from "@core/guards/auth.guard";
+import {PublicGuard} from "@core/guards/public.guard";
+import {INTERNAL_ROUTES} from "@data/routes/internal.const";
+
 
 
 const routes: Routes = [
   {
-   path:'auth',
-   loadChildren: ()=> import ('./auth/auth.module').then(m => m.AuthModule),
+    path: INTERNAL_ROUTES.MODULE_AUTH_DEFAULT,
+    loadChildren: () => import ('./auth/auth.module').then(m => m.AuthModule),
+    canActivate: [PublicGuard],
+    canMatch: [PublicGuard]
   },
   {
-    path:'heroes',
-    loadChildren: ()=> import ('./heroes/heroes.module').then(m => m.HeroesModule),
-   },
-   {
-    path:'404',
-    component: Error404PageComponent,
-   },
-   {
-    path:'',   
-    redirectTo: 'heroes',
+    path: INTERNAL_ROUTES.MODULE_HEROS_DEFAULT,
+    loadChildren: () => import ('./heroes/heroes.module').then(m => m.HeroesModule),
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard]
+  },
+  {
+    path: '',
+    redirectTo: INTERNAL_ROUTES.MODULE_HEROS_DEFAULT,
     pathMatch: 'full'
-   },
-   {
-    path:'**',
-    redirectTo: '404',
-     
-   },
-  
-  
-  ];
+  },
+  {
+    path: '**',
+    component: Error404PageComponent,
+  },
+
+
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)], 
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

@@ -1,0 +1,44 @@
+<form [formGroup]="registerForm">
+
+
+  <div class="flex flex-column">
+
+    <span class="text-lg mb-4">Registrar Cuenta</span>
+
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input formControlName="name"
+        type="text" matInput
+        placeholder="Nombre">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Usuario</mat-label>
+      <input formControlName="username"
+        type="text"
+        matInput placeholder="usuario">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input formControlName="password"
+        type="password"
+        matInput placeholder="Contraseña">
+    </mat-form-field>
+
+    <button mat-button mat-flat-button color="primary"
+            type="submit"
+            (click)="registerUser()"
+            >
+      <mat-icon>save</mat-icon>
+      Registrar cuenta
+
+    </button>
+
+    <div class="flex justify-content-end mt-5">
+      <a routerLink="/auth/login">¿tienes cuenta?</a>
+    </div>
+
+  </div>
+
+</form>

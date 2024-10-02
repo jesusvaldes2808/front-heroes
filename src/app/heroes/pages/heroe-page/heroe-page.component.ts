@@ -1,40 +1,50 @@
-import { Component, OnInit } from '@angular/core';
-import { HeroesService } from '../../services/heroes.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
-import { Hero } from '../../interfaces/hero.interface';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {delay, switchMap} from 'rxjs';
 
- 
+import {HeroesService} from "@core/services";
+import {Hero} from '@data/interface/hero.interface';
+import {INTERNAL_ROUTES} from "@data/routes/internal.const";
+
 
 @Component({
   selector: 'app-heroe-page',
   templateUrl: './heroe-page.component.html',
   styles: ``
 })
-export class HeroePageComponent implements OnInit{
+export class HeroePageComponent implements OnInit {
 
-  public hero? : Hero
+  public hero?: Hero
 
-  constructor(private _heroesService : HeroesService,
-              private  _activateRouter : ActivatedRoute,
-              private _router: Router){
+  constructor(private _heroesService: HeroesService,
+              private _activateRouter: ActivatedRoute,
+              private _router: Router
+  ) { }
+
+  ngOnInit(): void {
+    this.getHeroesById();
 
   }
 
-  ngOnInit(): void {
-    
-      this._activateRouter.params
+  private getHeroesById(): void {
+    this._activateRouter.params
       .pipe(
-        switchMap(({id})=> this._heroesService.getHeroesById(id))
-      ).subscribe( hero => {
-          
-        if(!hero) return this._router.navigate(['/heroes/list'])
-          
-        this.hero= hero;
-        console.log(hero)
-        return
-        }
-      )
+        delay(500),
+        switchMap(({id}) => this._heroesService.getHeroesById(id)
+        ))
+      .subscribe((hero) => {
+
+        if (!hero) return this._router.navigate([INTERNAL_ROUTES.PAGE_HERO_LIST_ID]);
+        this.hero = hero;
+        return;
+
+      })
+  }
+
+
+  public goBack(): void {
+
+    this._router.navigateByUrl(INTERNAL_ROUTES.PAGE_HERO_LIST_ID)
   }
 
 }

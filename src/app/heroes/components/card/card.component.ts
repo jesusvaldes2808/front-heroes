@@ -1,6 +1,6 @@
 import { Component, Input, OnInit,  } from '@angular/core';
-import { Hero } from '../../interfaces/hero.interface';
-import { error } from 'console';
+
+import { Hero } from '@data/interface/hero.interface';
 
 @Component({
   selector: 'heroes-hero-card',
@@ -10,12 +10,11 @@ import { error } from 'console';
 export class CardComponent implements OnInit{
 
   @Input()
-   public heroI!: Hero
+   public heros!: Hero;
 
   ngOnInit(): void {
-      if (!this.heroI)  throw Error(' Heroes no encontrados')
-        
-       
+
+      if (!this.heros)  throw Error(' Heroes no encontrados')
   }
 
 }

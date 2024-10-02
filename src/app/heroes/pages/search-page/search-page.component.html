@@ -1,1 +1,20 @@
-<p>search-page works!</p>
+<div class="flex flex-colum p-2">
+
+
+  <div class="card flex justify-content-between">
+    <i class="pi pi-search"   style="font-size:1.2rem ; margin-right:6px; color:white"  ></i>
+    <form [formGroup]="formGroup">
+
+      <p-autoComplete
+        formControlName="selectedHero"
+        [suggestions]="filteredHeros"
+        (completeMethod)="filterCountry($event)"
+        (onSelect)="onSelectHero($event)"
+        field="superhero"
+        placeholder="Buscar heroes"
+      />
+
+
+    </form>
+  </div>
+</div>

@@ -1,13 +1,22 @@
- 
+<app-banner></app-banner>
+<div class="container">
+  <div class="header_container">
+
     <h1>Listado de Heroes</h1>
 
-    <mat-divider></mat-divider>
+    <app-search-page></app-search-page>
 
-    <div class="grid">
+  </div>
+  <mat-divider></mat-divider>
 
-        <div *ngFor="let hero of hero" 
-         class="col-12 sm:col-4 md:col-3 xl:col-2">
-            <heroes-hero-card [heroI]="hero"></heroes-hero-card>
-        </div>
-    </div> 
-     
+  <div class="grid">
+
+    <div *ngFor="let hero of heroInterface"
+         class="col-12 sm:col-4 md:col-3 xl:col-3">
+      <heroes-hero-card [heros]="hero"></heroes-hero-card>
+    </div>
+  </div>
+
+</div>
+
+

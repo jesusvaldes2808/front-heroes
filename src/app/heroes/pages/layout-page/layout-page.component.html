@@ -1,41 +1,42 @@
- 
-  <mat-sidenav-container fullscreen>
+<mat-sidenav-container fullscreen>
 
-    <mat-sidenav #sidenav mode="push" [ngStyle]="{width: '250px'}">
-        
-        <mat-toolbar>
+  <mat-sidenav #sidenav mode="push" [ngStyle]="{width: '250px'}" style="background-color:#0077F2">
 
-            <span>Menu</span>
-            <span class="spacer"></span>
-            <button mat-icon-button (click)="sidenav.toggle()">
-            <mat-icon>menu</mat-icon>
-            </button>
-        </mat-toolbar>
+    <mat-toolbar style="background-color:#0077F2; color:white">
 
-        <mat-nav-list>
-            <mat-list-item
-            *ngFor="let item of sidebarItems"
-             [routerLink]="item.url"
-             (click)="sidenav.toggle()"
-            >
-            <mat-icon>{{item.icon}}</mat-icon>
-            {{item.label}}
-            </mat-list-item>
-        </mat-nav-list>
-    
-    </mat-sidenav>
+      <span>Menu</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon >menu</mat-icon>
+      </button>
 
-    <mat-toolbar color="primary">
-        <button mat-icon-button (click)="sidenav.toggle()">
-            <mat-icon>menu</mat-icon>
-        </button>
-   
-    
-        <span class="spacer"></span>
-        <button mat-button>Logaut</button>
     </mat-toolbar>
 
-    <div class="container">
-        <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-container>
+    <mat-nav-list  >
+      <mat-list-item
+        *ngFor="let items of sidebarItems"
+        [routerLink]="items.url"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon matListItemIcon style="color: white;">{{ items.icon }}  </mat-icon>
+        <li style="color: white;">{{ items.label }}</li>
+      </mat-list-item>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+
+  <mat-toolbar class="nadvar" color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon style="color:#0077F2;">menu</mat-icon>
+    </button>
+
+
+    <span></span>
+    <button mat-button (click)="onLogout()" style="color:#0077F2">Logaut</button>
+  </mat-toolbar>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

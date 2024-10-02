@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
-import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { RegisterPageComponent } from './pages/register-page/register-page.component';
-import { MaterialModule } from '../material/material.module';
+import { LayoutPageComponent } from '../shared/pages/layout-page/layout-page.component';
+import { LoginPageComponent } from '../shared/pages/login-page/login-page.component';
+import { RegisterPageComponent } from '../shared/pages/register-page/register-page.component';
+import { MaterialModule } from '../shared/modules/material.module';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { MaterialModule } from '../material/material.module';
     CommonModule,
     AuthRoutingModule,
     MaterialModule,
+    ReactiveFormsModule,
   ]
 })
 export class AuthModule { }

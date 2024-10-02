@@ -5,32 +5,45 @@ import { HeroePageComponent } from './pages/heroe-page/heroe-page.component';
 import { ListPageComponent } from './pages/list-page/list-page.component';
 import { NewPageComponent } from './pages/new-page/new-page.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
+import {INTERNAL_ROUTES} from "@data/routes/internal.const";
+import {Error404PageComponent} from "../shared/pages/error404-page/error404-page.component";
 
 const routes: Routes = [
   {
     path:'', component: LayoutPageComponent,
     children:[
-      
+
       {
-        path:'new-hero', component: NewPageComponent
+        path: INTERNAL_ROUTES.PAGE_HERO_NEW_HERO,
+        component: NewPageComponent
       },
       {
-        path:'search', component: SearchPageComponent
+        path: INTERNAL_ROUTES.PAGE_SEARCH_HERO,
+        component: SearchPageComponent
       },
       {
-        path:'edit/:id', component: NewPageComponent
+        path: INTERNAL_ROUTES.PAGE_HERO_EDIT,
+        component: NewPageComponent
       },
       {
-        path:'list', component: ListPageComponent
+        path: INTERNAL_ROUTES.PAGE_HERO_LIST,
+        component: ListPageComponent
       },
       {
-        path:':id', component: HeroePageComponent
+        path: INTERNAL_ROUTES.PAGE_HERO_ID ,
+        component: HeroePageComponent
       },
       {
-        path:'**', redirectTo: 'list'
+        path:'',
+        redirectTo: INTERNAL_ROUTES.PAGE_HERO_LIST,
+        pathMatch:'full'
       },
-      
-      
+      {
+        path: '**',
+        component: Error404PageComponent,
+      }
+
+
     ]
 
   }

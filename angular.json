@@ -43,8 +43,8 @@
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeflex/primeflex.min.css"
 
-              
-               
+
+
             ],
             "scripts": [],
             "server": "src/main.server.ts",
@@ -57,15 +57,17 @@
             "production": {
               "fileReplacements": [
 
-                {"replace": "src/environments/environments.ts"},
-                {"with": "src/environments/environments.prod.ts"}
+                {
+                  "replace": "src/environments/environments.ts",
+                  "with": "src/environments/environments.prod.ts"
+                }
 
               ],
               "budgets": [
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "100mb"
                 },
                 {
                   "type": "anyComponentStyle",

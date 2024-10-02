@@ -6,7 +6,6 @@ import {AuthService} from "@core/services";
 import {INTERNAL_ROUTES} from "@data/routes/internal.const";
 import {FormBuilder, Validators} from "@angular/forms";
 import {LoginRequest} from "@data/interface/login-request";
-import * as console from "node:console";
 import {switchMap, tap, timer} from "rxjs";
 
 @Component({

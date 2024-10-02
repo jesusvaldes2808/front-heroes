@@ -9,3 +9,9 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/nginx.conf:ro
     restart: always
+    networks:
+      - project-network
+
+networks:
+  project-network:
+    external: true
